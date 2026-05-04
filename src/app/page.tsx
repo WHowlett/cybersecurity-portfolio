@@ -34,29 +34,29 @@ const featuredProjects = [
 export default function Home() {
   return (
     <main>
-      <section className="mx-auto max-w-6xl px-6 py-24">
+      <section className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
         <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
           Cybersecurity Portfolio
         </p>
 
-        <h1 className="mt-5 max-w-4xl text-5xl font-bold tracking-tight md:text-7xl">
-  Security-focused thinking backed by real lab work, detection engineering,
-  and risk-driven design.
-</h1>
+        <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-7xl">
+          Security-focused thinking backed by real lab work, detection
+          engineering, and risk-driven design.
+        </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-  I’m an entry-level cybersecurity professional with advanced hands-on
-  experience in security architecture, SIEM detection, and lab-based security
-  operations. This portfolio shows how I approach real problems, from
-  designing secure environments to validating detections and documenting
-  evidence.
-</p>
+          I’m an entry-level cybersecurity professional with advanced hands-on
+          experience in security architecture, SIEM detection, and lab-based
+          security operations. This portfolio shows how I approach real
+          problems, from designing secure environments to validating detections
+          and documenting evidence.
+        </p>
 
-<p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-  I may be early in my career, but I focus on building practical skills the
-  same way security teams operate: structured thinking, real testing, and
-  clear results.
-</p>
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
+          I may be early in my career, but I focus on building practical skills
+          the same way security teams operate: structured thinking, real
+          testing, and clear results.
+        </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
@@ -94,31 +94,32 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
-  <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-8">
-    <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
-      What this portfolio shows
-    </p>
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-8">
+          <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+            What this portfolio shows
+          </p>
 
-    <h2 className="mt-4 text-3xl font-bold">
-      Not just what I know - how I apply it.
-    </h2>
+          <h2 className="mt-4 text-3xl font-bold">
+            Not just what I know - how I apply it.
+          </h2>
 
-    <p className="mt-5 max-w-4xl leading-7 text-slate-300">
-      This portfolio is built to show how I approach cybersecurity as an
-      entry-level professional with strong hands-on knowledge. Instead of only
-      listing tools or certifications, I use projects to demonstrate how I
-      analyze risk, design secure environments, build lab infrastructure,
-      collect evidence, test detections, troubleshoot problems, and communicate
-      findings clearly.
-    </p>
+          <p className="mt-5 max-w-4xl leading-7 text-slate-300">
+            This portfolio is built to show how I approach cybersecurity as an
+            entry-level professional with strong hands-on knowledge. Instead of
+            only listing tools or certifications, I use projects to demonstrate
+            how I analyze risk, design secure environments, build lab
+            infrastructure, collect evidence, test detections, troubleshoot
+            problems, and communicate findings clearly.
+          </p>
 
-    <p className="mt-4 max-w-4xl leading-7 text-slate-300">
-      Some projects are completed, while others are planned as part of a
-      long-term learning roadmap. The goal is to show progression, consistency,
-      and the ability to turn cybersecurity concepts into practical work.
-    </p>
-  </div>
-</section>
+          <p className="mt-4 max-w-4xl leading-7 text-slate-300">
+            Some projects are completed, while others are planned as part of a
+            long-term learning roadmap. The goal is to show progression,
+            consistency, and the ability to turn cybersecurity concepts into
+            practical work.
+          </p>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="flex items-end justify-between gap-6">
@@ -142,7 +143,7 @@ export default function Home() {
             <Link
               key={project.title}
               href={project.href}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-cyan-400 hover:-translate-y-1"
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
                 {project.label}
@@ -159,58 +160,59 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
-  <div className="text-center">
-    <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
-      Core Capabilities
-    </p>
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+            Core Capabilities
+          </p>
 
-    <h2 className="mt-4 text-3xl font-bold">
-      How I approach cybersecurity work
-    </h2>
+          <h2 className="mt-4 text-3xl font-bold">
+            How I approach cybersecurity work
+          </h2>
 
-    <p className="mt-4 mx-auto max-w-2xl text-slate-300">
-      These are the areas I focus on when building, analyzing, and improving
-      security environments.
-    </p>
-  </div>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-300">
+            These are the areas I focus on when building, analyzing, and
+            improving security environments.
+          </p>
+        </div>
 
-  <div className="mt-12 grid gap-6 md:grid-cols-3">
-    <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-cyan-400 hover:-translate-y-1">
-      <h3 className="text-xl font-bold group-hover:text-cyan-400">
-        Security Architecture & Risk
-      </h3>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
+            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+              Security Architecture & Risk
+            </h3>
 
-      <p className="mt-3 text-sm leading-6 text-slate-300">
-        I design secure environments using segmentation, DMZ concepts, least
-        privilege, and risk-based thinking to reduce attack surface and limit
-        lateral movement.
-      </p>
-    </div>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              I design secure environments using segmentation, DMZ concepts,
+              least privilege, and risk-based thinking to reduce attack surface
+              and limit lateral movement.
+            </p>
+          </div>
 
-    <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-cyan-400 hover:-translate-y-1">
-      <h3 className="text-xl font-bold group-hover:text-cyan-400">
-        Detection Engineering & SIEM
-      </h3>
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
+            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+              Detection Engineering & SIEM
+            </h3>
 
-      <p className="mt-3 text-sm leading-6 text-slate-300">
-        I build and test detection logic using Wazuh, simulate attacks, validate
-        alerts, and analyze logs to turn raw data into meaningful security
-        signals.
-      </p>
-    </div>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              I build and test detection logic using Wazuh, simulate attacks,
+              validate alerts, and analyze logs to turn raw data into meaningful
+              security signals.
+            </p>
+          </div>
 
-    <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-cyan-400 hover:-translate-y-1">
-      <h3 className="text-xl font-bold group-hover:text-cyan-400">
-        Documentation & Evidence
-      </h3>
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
+            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+              Documentation & Evidence
+            </h3>
 
-      <p className="mt-3 text-sm leading-6 text-slate-300">
-        I document projects with clear structure, screenshots, logs, and
-        findings to show not just results, but how I think and solve problems.
-      </p>
-    </div>
-  </div>
-</section>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              I document projects with clear structure, screenshots, logs, and
+              findings to show not just results, but how I think and solve
+              problems.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
