@@ -35,6 +35,33 @@ export default function Home() {
   return (
     <main>
       <section className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <div className="mb-8 rounded-3xl border border-cyan-400/30 bg-cyan-400/10 p-5 md:flex md:items-center md:justify-between md:gap-6">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+              Open to Opportunities
+            </p>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+              Seeking entry-level SOC Analyst, Security Analyst, Junior Security Engineer,
+              Detection Engineering Support, Cloud Security Support, and API Security Support roles.
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-3 md:mt-0 md:shrink-0">
+            <Link
+              href="/resume"
+              className="rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300"
+            >
+              View Resume
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-400"
+            >
+              Contact Me
+            </Link>
+          </div>
+        </div>
+
         <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
           Cybersecurity Portfolio
         </p>
@@ -143,7 +170,7 @@ export default function Home() {
             <Link
               key={project.title}
               href={project.href}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400"
+              className="card-glow rounded-2xl p-6"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
                 {project.label}
@@ -176,8 +203,8 @@ export default function Home() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
-            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+          <div className="card-glow rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white">
               Security Architecture & Risk
             </h3>
 
@@ -188,8 +215,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
-            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+          <div className="card-glow rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white">
               Detection Engineering & SIEM
             </h3>
 
@@ -200,8 +227,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-cyan-400">
-            <h3 className="text-xl font-bold group-hover:text-cyan-400">
+          <div className="card-glow rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white">
               Documentation & Evidence
             </h3>
 
