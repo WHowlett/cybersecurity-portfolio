@@ -58,6 +58,22 @@ export default function Footer() {
             </a>
             <a
               className="text-slate-400 hover:text-cyan-400"
+              href="https://x.com/waynehowlettsec"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              X / Twitter
+            </a>
+            <a
+              className="text-slate-400 hover:text-cyan-400"
+              href="https://facebook.com/whowlettsecurity"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook Page
+            </a>
+            <a
+              className="text-slate-400 hover:text-cyan-400"
               href="https://connect.ihowlett.com"
               target="_blank"
               rel="noopener noreferrer"
