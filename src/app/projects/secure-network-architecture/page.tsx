@@ -233,18 +233,17 @@ export default function SecureNetworkArchitecturePage() {
     implementation.
   </p>
 
-  {/* Local Video */}
   <div className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-black">
-    <video controls className="w-full">
-      <source
-        src="/videos/security-lab-architecture.mp4"
-        type="video/mp4"
-      />
-      Your browser does not support the video tag.
-    </video>
+    <iframe
+      className="aspect-video w-full"
+      src="https://www.youtube.com/embed/iDs2_2rH0fE"
+      title="Secure Network Architecture Project Walkthrough"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />
   </div>
 
-  {/* Note */}
   <div className="mt-6 rounded-xl border border-slate-700 bg-slate-950 p-4">
     <p className="text-sm leading-6 text-slate-400">
       Note: This video was recorded using voice-to-text assistance due to a
