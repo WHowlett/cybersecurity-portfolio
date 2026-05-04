@@ -1,3 +1,22 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Wayne Howlett’s technical background, cybersecurity journey, puzzle-solving mindset, and hands-on approach to security work.",
+  openGraph: {
+    title: "About Wayne Howlett | Cybersecurity Portfolio",
+    description:
+      "Learn about Wayne Howlett’s background in full-stack development, business intelligence, and hands-on cybersecurity work.",
+    url: "/about",
+  },
+  twitter: {
+    title: "About Wayne Howlett | Cybersecurity Portfolio",
+    description:
+      "Technical background, cybersecurity journey, and hands-on problem-solving mindset.",
+  },
+};
+
 export default function AboutPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-20">
