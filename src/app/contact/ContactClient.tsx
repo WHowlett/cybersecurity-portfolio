@@ -30,6 +30,20 @@ const contactLinks = [
     icon: ExternalLink,
     external: true,
   },
+  {
+    title: "X / Twitter",
+    text: "Follow short updates and cybersecurity learning notes.",
+    href: "https://x.com/waynehowlettsec",
+    icon: ExternalLink,
+    external: true,
+  },
+  {
+    title: "Facebook Page",
+    text: "Follow my professional cybersecurity page.",
+    href: "https://facebook.com/whowlettsecurity",
+    icon: ExternalLink,
+    external: true,
+  },
 ];
 
 export default function ContactClient() {
