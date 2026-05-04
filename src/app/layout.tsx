@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
@@ -77,6 +78,15 @@ export default function RootLayout({
 
         <Navbar />
         <div className="flex-1">{children}</div>
+
+        <Link
+          href="/contact"
+          className="fixed bottom-5 right-5 z-50 rounded-full border border-cyan-300/40 bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 shadow-2xl shadow-cyan-950/40 transition hover:-translate-y-1 hover:bg-cyan-300 focus:outline-none focus:ring-4 focus:ring-cyan-400/30 md:bottom-8 md:right-8"
+          aria-label="Contact Wayne Howlett"
+        >
+          Contact Me
+        </Link>
+
         <Footer />
       </body>
     </html>
