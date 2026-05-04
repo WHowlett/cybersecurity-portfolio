@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Wayne Howlett", url: siteUrl }],
   creator: "Wayne Howlett",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -34,12 +39,21 @@ export const metadata: Metadata = {
     description:
       "Hands-on cybersecurity portfolio featuring security architecture, Wazuh SIEM detection engineering, risk assessment, and practical lab projects.",
     siteName: "Wayne Howlett Cybersecurity Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Wayne Howlett Cybersecurity Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wayne Howlett | Cybersecurity Portfolio",
     description:
       "Hands-on cybersecurity portfolio featuring security architecture, Wazuh SIEM detection engineering, risk assessment, and practical lab projects.",
+    images: ["/og-image.png"],
   },
 };
 
