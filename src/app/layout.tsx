@@ -1,6 +1,47 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
+
+const siteUrl = "https://cybersecurity-portfolio-seven-nu.vercel.app";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Wayne Howlett | Cybersecurity Portfolio",
+    template: "%s | Wayne Howlett",
+  },
+  description:
+    "Cybersecurity portfolio for Wayne Howlett, focused on security architecture, SIEM detection engineering, risk assessment, cloud and API security, and hands-on lab projects.",
+  keywords: [
+    "Wayne Howlett",
+    "cybersecurity portfolio",
+    "SOC analyst",
+    "security analyst",
+    "junior security engineer",
+    "Wazuh SIEM",
+    "detection engineering",
+    "security architecture",
+    "cloud security",
+    "API security",
+  ],
+  authors: [{ name: "Wayne Howlett", url: siteUrl }],
+  creator: "Wayne Howlett",
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Wayne Howlett | Cybersecurity Portfolio",
+    description:
+      "Hands-on cybersecurity portfolio featuring security architecture, Wazuh SIEM detection engineering, risk assessment, and practical lab projects.",
+    siteName: "Wayne Howlett Cybersecurity Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wayne Howlett | Cybersecurity Portfolio",
+    description:
+      "Hands-on cybersecurity portfolio featuring security architecture, Wazuh SIEM detection engineering, risk assessment, and practical lab projects.",
+  },
+};
 
 export default function RootLayout({
   children,
