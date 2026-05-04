@@ -1,4 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Security Lab Architecture Case Study",
+  description:
+    "Case study covering Wayne Howlett’s cybersecurity lab architecture using Wazuh SIEM, Kali Linux, Linux, Windows, VirtualBox, log collection, and detection validation.",
+  openGraph: {
+    title: "Security Lab Architecture Case Study | Wayne Howlett",
+    description:
+      "A hands-on cybersecurity lab built for detection testing, threat simulation, and SIEM analysis.",
+    url: "/projects/security-lab-architecture",
+  },
+  twitter: {
+    title: "Security Lab Architecture Case Study | Wayne Howlett",
+    description:
+      "Wazuh SIEM lab architecture, threat simulation, log collection, and detection validation.",
+  },
+};
 
 export default function SecurityLabArchitecturePage() {
   return (
@@ -10,7 +28,6 @@ export default function SecurityLabArchitecturePage() {
         ← Back to Projects
       </Link>
 
-      {/* HERO */}
       <section className="mt-8">
         <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
           Case Study — Security Lab
@@ -28,7 +45,27 @@ export default function SecurityLabArchitecturePage() {
         </p>
       </section>
 
-      {/* CONTEXT */}
+      <section className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="card-glow rounded-2xl p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+            Status
+          </p>
+          <p className="mt-3 font-semibold text-white">Completed Case Study</p>
+        </div>
+        <div className="card-glow rounded-2xl p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+            Focus
+          </p>
+          <p className="mt-3 font-semibold text-white">SIEM Lab & Detection</p>
+        </div>
+        <div className="card-glow rounded-2xl p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+            Last Updated
+          </p>
+          <p className="mt-3 font-semibold text-white">May 2026</p>
+        </div>
+      </section>
+
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Context and Objective</h2>
 
@@ -56,7 +93,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* APPROACH */}
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Approach</h2>
 
@@ -85,7 +121,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* ENVIRONMENT */}
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Environment Design</h2>
 
@@ -119,7 +154,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* EXECUTION */}
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Execution and Validation</h2>
 
@@ -153,7 +187,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* SKILLS */}
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Skills and Concepts Demonstrated</h2>
 
@@ -188,7 +221,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* WHY IT MATTERS */}
       <section className="mt-14">
         <h2 className="text-3xl font-bold">Why This Project Matters</h2>
 
@@ -214,7 +246,6 @@ export default function SecurityLabArchitecturePage() {
         </div>
       </section>
 
-      {/* DOCUMENT */}
       <section className="mt-14 rounded-3xl border border-slate-800 bg-slate-900/70 p-8">
         <h2 className="text-3xl font-bold">
           Full Report and Supporting Documentation
@@ -225,10 +256,11 @@ export default function SecurityLabArchitecturePage() {
           diagrams, validation process, and supporting evidence.
         </p>
 
-        <div className="mt-6 flex gap-4">
+        <div className="mt-6 flex flex-wrap gap-4">
           <a
             href="/docs/security-lab-architecture.pdf"
             target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl bg-cyan-400 px-5 py-3 font-semibold text-slate-950 hover:bg-cyan-300"
           >
             View Report
@@ -243,12 +275,12 @@ export default function SecurityLabArchitecturePage() {
           </a>
         </div>
         <div className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-  <iframe
-    src="/docs/security-lab-architecture.pdf"
-    className="h-[700px] w-full bg-white"
-    title="Security Lab Architecture Report PDF"
-  />
-</div>
+          <iframe
+            src="/docs/security-lab-architecture.pdf"
+            className="h-[700px] w-full bg-white"
+            title="Security Lab Architecture Report PDF"
+          />
+        </div>
       </section>
     </main>
   );
