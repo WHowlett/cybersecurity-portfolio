@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { projects } from "@/data/projects";
-import { Search, FolderKanban, Clock, CheckCircle2, Share2, Facebook, Mail, Copy } from "lucide-react";
+import { Search, FolderKanban, Clock, CheckCircle2, Share2, Mail, Copy } from "lucide-react";
 
 const categories = [
   "All",
@@ -19,10 +19,8 @@ const statuses = ["All", "completed", "planned"];
 const siteUrl = "https://www.ihowlett.com";
 
 function shareLinks(title: string, url: string) {
-  const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   return {
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     email: `mailto:?subject=${encodedTitle}&body=${encodeURIComponent(`Check out this cybersecurity project: ${url}`)}`,
   };
 }
@@ -37,6 +35,19 @@ export default function ProjectsClient() {
     await navigator.clipboard.writeText(url);
     setCopiedProjectId(projectId);
     window.setTimeout(() => setCopiedProjectId(null), 2200);
+  };
+
+  const handleNativeShare = async (projectTitle: string, projectUrl: string) => {
+    if (navigator.share) {
+      await navigator.share({
+        title: `${projectTitle} | Wayne Howlett`,
+        text: "Check out this cybersecurity project from Wayne Howlett.",
+        url: projectUrl,
+      });
+      return;
+    }
+
+    await navigator.clipboard.writeText(projectUrl);
   };
 
   const filteredProjects = useMemo(() => {
@@ -260,16 +271,18 @@ export default function ProjectsClient() {
                       <Share2 className="h-3.5 w-3.5" /> Share project
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <a
-                        href={links.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(event) => event.stopPropagation()}
-                        className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400"
-                        aria-label={`Share ${project.title} on Facebook`}
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          handleNativeShare(project.title, projectUrl);
+                        }}
+                        className="inline-flex items-center gap-2 rounded-full border border-cyan-400/50 bg-cyan-400/10 px-3 py-1.5 text-xs font-semibold text-cyan-300 transition hover:border-cyan-400 hover:bg-cyan-400 hover:text-slate-950"
+                        aria-label={`Share ${project.title}`}
                       >
-                        <Facebook className="h-3.5 w-3.5" /> Facebook
-                      </a>
+                        <Share2 className="h-3.5 w-3.5" /> Share
+                      </button>
                       <a
                         href={links.email}
                         onClick={(event) => event.stopPropagation()}
