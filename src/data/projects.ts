@@ -32,6 +32,17 @@ export const projects = [
     skills: ["Wazuh", "Hydra", "SSH Brute Force", "MITRE T1110", "Log Analysis"],
     href: "/projects/wazuh-detection-engineering",
   },
+  {
+    id: "brute-force-detection",
+    title: "SSH Brute Force Detection with Layered Wazuh Rules",
+    status: "completed",
+    category: "SOC / Security Analyst",
+    roleFocus: "SOC Analyst / Detection Engineering",
+    description:
+      "Implemented layered Wazuh SIEM correlation rules to detect SSH brute-force activity, escalating from early warning to high-severity alerts using Hydra attack simulation.",
+    skills: ["Wazuh", "Hydra", "SSH", "MITRE T1110", "Layered Detection"],
+    href: "/projects/brute-force-detection",
+  },
 
   // Planned SOC / Security Analyst Projects
   {
@@ -43,16 +54,6 @@ export const projects = [
     description:
       "Analyze simulated phishing artifacts, investigate indicators, document findings, and recommend mitigation steps.",
     skills: ["Phishing", "Email Analysis", "IOCs", "Investigation"],
-  },
-  {
-    id: "brute-force-detection",
-    title: "Brute Force Detection",
-    status: "planned",
-    category: "SOC / Security Analyst",
-    roleFocus: "SOC Analyst",
-    description:
-      "Detect repeated authentication failures, analyze source activity, validate alerts, and document response recommendations.",
-    skills: ["Wazuh", "Hydra", "SSH", "Authentication Logs"],
   },
   {
     id: "powershell-threat-hunt",
