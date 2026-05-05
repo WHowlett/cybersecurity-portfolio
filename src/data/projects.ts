@@ -43,6 +43,27 @@ export const projects = [
     skills: ["Wazuh", "Hydra", "SSH", "MITRE T1110", "Layered Detection"],
     href: "/projects/brute-force-detection",
   },
+  {
+    id: "api-security-assessment-hardening",
+    title: "API Security Assessment & Hardening",
+    status: "completed",
+    category: "Application Security",
+    roleFocus: "API Security / Security Engineering",
+    description:
+      "Identified and secured API vulnerabilities by implementing JWT authentication, RBAC, rate limiting, input validation, and security logging in a Node.js/Express REST API.",
+    skills: [
+      "API Security",
+      "JWT",
+      "RBAC",
+      "Rate Limiting",
+      "Zod",
+      "Input Validation",
+      "Node.js",
+      "Express",
+      "Security Logging",
+    ],
+    href: "/projects/api-security-assessment-hardening",
+  },
 
   // Planned SOC / Security Analyst Projects
   {
@@ -214,7 +235,7 @@ export const projects = [
     title: "Zero Trust Architecture",
     status: "planned",
     category: "Cloud / Architecture",
-    roleFocus: "Security Architecture",
+    roleFocus: "Security Engineering",
     description:
       "Design a Zero Trust-style architecture using identity-aware access, segmentation, least privilege, and monitoring.",
     skills: ["Zero Trust", "Identity", "Segmentation", "Least Privilege"],
@@ -224,7 +245,7 @@ export const projects = [
     title: "Logging Strategy",
     status: "planned",
     category: "Cloud / Architecture",
-    roleFocus: "Security Architecture / SOC",
+    roleFocus: "Security Engineering / SOC",
     description:
       "Plan what should be logged, where logs should go, how they support detection, and how coverage can be improved.",
     skills: ["Logging", "SIEM", "Monitoring", "Detection Coverage"],
