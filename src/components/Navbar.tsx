@@ -18,6 +18,10 @@ const projectLinks = [
     name: "Wazuh Detection Engineering",
     href: "/projects/wazuh-detection-engineering",
   },
+  {
+    name: "SSH Brute Force Detection",
+    href: "/projects/brute-force-detection",
+  },
 ];
 
 export default function Navbar() {
