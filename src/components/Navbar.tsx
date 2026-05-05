@@ -22,6 +22,10 @@ const projectLinks = [
     name: "SSH Brute Force Detection",
     href: "/projects/brute-force-detection",
   },
+  {
+    name: "API Security Assessment & Hardening",
+    href: "/projects/api-security-assessment-hardening",
+  },
 ];
 
 export default function Navbar() {
