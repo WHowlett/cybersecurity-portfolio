@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { projects } from "@/data/projects";
-import { Search, FolderKanban, Clock, CheckCircle2 } from "lucide-react";
+import { Search, FolderKanban, Clock, CheckCircle2, Share2, Facebook, Mail, Copy } from "lucide-react";
 
 const categories = [
   "All",
@@ -16,11 +16,28 @@ const categories = [
 ];
 
 const statuses = ["All", "completed", "planned"];
+const siteUrl = "https://www.ihowlett.com";
+
+function shareLinks(title: string, url: string) {
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+  return {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    email: `mailto:?subject=${encodedTitle}&body=${encodeURIComponent(`Check out this cybersecurity project: ${url}`)}`,
+  };
+}
 
 export default function ProjectsClient() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeStatus, setActiveStatus] = useState("All");
+  const [copiedProjectId, setCopiedProjectId] = useState<string | null>(null);
+
+  const handleCopy = async (projectId: string, url: string) => {
+    await navigator.clipboard.writeText(url);
+    setCopiedProjectId(projectId);
+    window.setTimeout(() => setCopiedProjectId(null), 2200);
+  };
 
   const filteredProjects = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -177,6 +194,8 @@ export default function ProjectsClient() {
         <section className="mt-12 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => {
             const isCompleted = project.status === "completed";
+            const projectUrl = project.href ? `${siteUrl}${project.href}` : `${siteUrl}/projects`;
+            const links = shareLinks(project.title, projectUrl);
 
             const card = (
               <article
@@ -234,6 +253,47 @@ export default function ProjectsClient() {
                     <span className="text-yellow-300">Project page coming soon</span>
                   )}
                 </div>
+
+                {isCompleted && project.href && (
+                  <div className="mt-5 border-t border-slate-800 pt-4">
+                    <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                      <Share2 className="h-3.5 w-3.5" /> Share project
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={links.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400"
+                        aria-label={`Share ${project.title} on Facebook`}
+                      >
+                        <Facebook className="h-3.5 w-3.5" /> Facebook
+                      </a>
+                      <a
+                        href={links.email}
+                        onClick={(event) => event.stopPropagation()}
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400"
+                        aria-label={`Share ${project.title} by email`}
+                      >
+                        <Mail className="h-3.5 w-3.5" /> Email
+                      </a>
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          handleCopy(project.id, projectUrl);
+                        }}
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400"
+                        aria-label={`Copy link to ${project.title}`}
+                      >
+                        <Copy className="h-3.5 w-3.5" />
+                        {copiedProjectId === project.id ? "Copied" : "Copy"}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {!isCompleted && (
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-slate-950/85 opacity-0 transition duration-300 group-hover:opacity-100">
