@@ -5,21 +5,50 @@ import ProjectShareActions from "@/components/ProjectShareActions";
 const projectUrl = "https://www.ihowlett.com/projects/brute-force-detection";
 const reportPath = "/docs/SSH_Brute_Force_Report.pdf";
 const githubUrl = "https://github.com/WHowlett/wazuh-ssh-bruteforce-detection.git";
+const ogImage = "/og-image.png";
 
 export const metadata: Metadata = {
-  title: "SSH Brute Force Detection Case Study",
+  title: "SSH Brute Force Detection with Wazuh SIEM",
   description:
-    "Layered detection engineering and incident analysis using Wazuh SIEM to detect SSH brute-force activity with early-warning and high-severity custom correlation rules.",
+    "Wayne Howlett case study: layered Wazuh SIEM detection for SSH brute-force attacks using Hydra, Kali Linux, Linux auth logs, custom correlation rules, alert escalation, and MITRE ATT&CK T1110 mapping.",
+  keywords: [
+    "Wayne Howlett",
+    "SSH brute force detection",
+    "Wazuh SIEM",
+    "detection engineering",
+    "SOC analyst portfolio",
+    "Hydra brute force",
+    "Kali Linux",
+    "Linux auth logs",
+    "MITRE ATT&CK T1110",
+    "SIEM correlation rules",
+    "cybersecurity portfolio",
+  ],
+  alternates: {
+    canonical: projectUrl,
+  },
   openGraph: {
-    title: "SSH Brute Force Detection Case Study | Wayne Howlett",
+    type: "article",
+    url: projectUrl,
+    title: "SSH Brute Force Detection with Wazuh SIEM | Wayne Howlett",
     description:
-      "A hands-on Wazuh SIEM project using Kali Linux, Hydra, custom correlation rules, and MITRE ATT&CK T1110 mapping.",
-    url: "/projects/brute-force-detection",
+      "Layered detection engineering case study using Wazuh SIEM, Hydra, Kali Linux, custom correlation rules, early-warning alerts, high-severity escalation, and MITRE ATT&CK T1110 mapping.",
+    siteName: "Wayne Howlett Cybersecurity Portfolio",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "SSH Brute Force Detection with Wazuh SIEM case study by Wayne Howlett",
+      },
+    ],
   },
   twitter: {
-    title: "SSH Brute Force Detection Case Study | Wayne Howlett",
+    card: "summary_large_image",
+    title: "SSH Brute Force Detection with Wazuh SIEM | Wayne Howlett",
     description:
-      "Layered Wazuh SIEM detection for SSH brute-force attacks using Hydra and custom escalation logic.",
+      "Layered Wazuh SIEM detection for SSH brute-force attacks using Hydra, custom correlation rules, alert escalation, and MITRE ATT&CK T1110 mapping.",
+    images: [ogImage],
   },
 };
 
