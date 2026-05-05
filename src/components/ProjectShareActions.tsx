@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Linkedin, Mail, Share2, Twitter } from "lucide-react";
+import { Check, Copy, Mail, Share2 } from "lucide-react";
 
 type ProjectShareActionsProps = {
   title: string;
@@ -44,8 +44,8 @@ export default function ProjectShareActions({
   };
 
   return (
-    <section className="mt-14 overflow-hidden rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/12 via-slate-900/80 to-slate-950 p-6 shadow-2xl shadow-cyan-950/20">
-      <div className="absolute inset-x-8 mt-[-1.5rem] h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
+    <section className="relative mt-14 overflow-hidden rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/12 via-slate-900/80 to-slate-950 p-6 shadow-2xl shadow-cyan-950/20">
+      <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
 
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
@@ -77,20 +77,20 @@ export default function ProjectShareActions({
             href={linkedInUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-400"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-4 py-3 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-400"
             aria-label={`Share ${title} on LinkedIn`}
           >
-            <Linkedin className="h-4 w-4" /> LinkedIn
+            LinkedIn
           </a>
 
           <a
             href={xUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-400"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-4 py-3 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-400"
             aria-label={`Share ${title} on X`}
           >
-            <Twitter className="h-4 w-4" /> X
+            X
           </a>
 
           <a
