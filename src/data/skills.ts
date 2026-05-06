@@ -7,12 +7,12 @@ export const skills = [
         level: "Strong",
         keywords: ["architecture", "design", "controls", "secure design", "systems", "network design", "resilient"],
         whatItIs:
-          "The practice of designing systems, networks, and controls so they are secure, resilient, and easier to monitor.",
+          "The practice of designing systems, networks, applications, and controls so they are secure, resilient, and easier to monitor.",
         whatItMeans:
           "It helps organizations reduce risk by planning security into the environment instead of adding it later.",
         howIUseIt:
-          "I use architecture diagrams, segmentation, control mapping, and risk notes to explain how systems should be protected.",
-        projects: ["secure-network-architecture"],
+          "I use architecture diagrams, segmentation, control mapping, API controls, and risk notes to explain how systems should be protected.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
         name: "Risk Assessment",
@@ -23,8 +23,8 @@ export const skills = [
         whatItMeans:
           "It helps prioritize the most important security problems instead of treating every issue the same.",
         howIUseIt:
-          "I document risks, explain business impact, and recommend practical controls in my architecture project.",
-        projects: ["secure-network-architecture"],
+          "I document risks, explain business impact, and recommend practical controls in architecture and API security projects.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
         name: "Threat Modeling",
@@ -35,8 +35,8 @@ export const skills = [
         whatItMeans:
           "It helps security teams identify abuse cases before attackers do.",
         howIUseIt:
-          "I use it to think through assets, trust boundaries, attack paths, and defensive controls.",
-        projects: ["secure-network-architecture", "api-security-testing"],
+          "I use it to think through assets, trust boundaries, attack paths, and defensive controls for networks and APIs.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
         name: "Network Segmentation",
@@ -85,12 +85,12 @@ export const skills = [
         level: "Strong",
         keywords: ["detection", "rules", "alerts", "attack behavior", "logic", "tuning", "validation"],
         whatItIs:
-          "The process of creating, testing, and improving rules that detect attacker behavior.",
+          "The process of creating, testing, and improving logic that detects attacker behavior.",
         whatItMeans:
-          "It turns raw logs into useful security alerts.",
+          "It turns raw logs and security events into useful alerts and investigation signals.",
         howIUseIt:
-          "I create custom Wazuh rules, simulate attacks, test alert behavior, and tune detection logic.",
-        projects: ["wazuh-detection-engineering", "detection-rule-engineering"],
+          "I create custom Wazuh rules, simulate attacks, test alert behavior, tune detection logic, and capture security events from applications.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
       },
       {
         name: "Custom Rule Development",
@@ -102,7 +102,7 @@ export const skills = [
           "Custom rules help detect activity that default tools may miss.",
         howIUseIt:
           "I write and test custom Wazuh rules for attack scenarios such as SSH brute-force attempts.",
-        projects: ["wazuh-detection-engineering", "detection-rule-engineering"],
+        projects: ["wazuh-detection-engineering", "brute-force-detection"],
       },
       {
         name: "Alert Analysis",
@@ -114,7 +114,7 @@ export const skills = [
           "It helps separate real threats from noise.",
         howIUseIt:
           "I analyze Wazuh alerts, confirm source activity, review logs, and document findings.",
-        projects: ["wazuh-detection-engineering", "malware-alert-triage"],
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "malware-alert-triage"],
       },
       {
         name: "SIEM Alert Tuning",
@@ -130,15 +130,15 @@ export const skills = [
       },
       {
         name: "Log Analysis",
-        level: "Good",
-        keywords: ["logs", "auth logs", "events", "timeline", "investigation", "wazuh", "evidence"],
+        level: "Strong",
+        keywords: ["logs", "auth logs", "events", "timeline", "investigation", "wazuh", "evidence", "application logs", "security logs"],
         whatItIs:
           "Reviewing system, application, and security logs to understand activity.",
         whatItMeans:
           "Logs are the evidence behind detection, investigation, and incident response.",
         howIUseIt:
-          "I review authentication logs, Wazuh alerts, command output, and timelines to explain what happened.",
-        projects: ["wazuh-detection-engineering", "web-log-analysis"],
+          "I review authentication logs, Wazuh alerts, API security logs, command output, and timelines to explain what happened.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening", "web-log-analysis"],
       },
     ],
   },
@@ -155,8 +155,8 @@ export const skills = [
         whatItMeans:
           "It helps detect unauthorized access attempts early.",
         howIUseIt:
-          "I simulated SSH brute-force activity with Hydra and validated detection through Wazuh alerts.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection"],
+          "I simulated SSH brute-force activity with Hydra and validated detection through Wazuh alerts. I also implemented API login rate limiting to reduce brute-force abuse risk.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
       },
       {
         name: "Phishing Analysis",
@@ -258,7 +258,7 @@ export const skills = [
           "SSH is commonly targeted, so it needs strong protection and monitoring.",
         howIUseIt:
           "I use SSH logs in my Wazuh lab to detect brute-force attempts and validate alerts.",
-        projects: ["wazuh-detection-engineering", "linux-hardening"],
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "linux-hardening"],
       },
       {
         name: "Firewall Review",
@@ -304,15 +304,87 @@ export const skills = [
     items: [
       {
         name: "API Security Testing",
-        level: "Planned",
-        keywords: ["api", "api security", "authentication", "authorization", "input validation", "data exposure", "owasp"],
+        level: "Strong",
+        keywords: ["api", "api security", "authentication", "authorization", "input validation", "data exposure", "owasp", "jwt", "rbac", "rate limiting"],
         whatItIs:
-          "Testing APIs for authentication, authorization, input validation, and data exposure issues.",
+          "Testing APIs for authentication, authorization, input validation, abuse prevention, and data exposure issues.",
         whatItMeans:
-          "APIs often expose sensitive business logic and data, so they must be tested carefully.",
+          "APIs often expose sensitive business logic and data, so they must be tested and hardened carefully.",
         howIUseIt:
-          "I plan to test common API weaknesses and document risk, evidence, and remediation.",
-        projects: ["api-security-testing"],
+          "I built and tested a Node.js/Express API, identified exposed routes, and implemented JWT authentication, RBAC, rate limiting, Zod validation, and security logging.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Authentication & Authorization",
+        level: "Strong",
+        keywords: ["authentication", "authorization", "jwt", "tokens", "rbac", "access control", "login", "admin", "permissions"],
+        whatItIs:
+          "Authentication verifies identity, while authorization controls what an authenticated user is allowed to access.",
+        whatItMeans:
+          "Strong auth and access control help prevent unauthorized data exposure, privilege abuse, and insecure endpoint access.",
+        howIUseIt:
+          "I implemented JWT-based login and protected API routes, then used role-based access control to restrict an admin endpoint to authorized users only.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "JWT Authentication",
+        level: "Strong",
+        keywords: ["jwt", "json web token", "bearer token", "token", "login", "session", "authorization header"],
+        whatItIs:
+          "A token-based authentication method used to prove a user has successfully logged in and can access protected API routes.",
+        whatItMeans:
+          "JWTs help APIs avoid exposing protected data without a valid token, but they must be validated carefully.",
+        howIUseIt:
+          "I configured login to issue JWTs and required a Bearer token in the Authorization header before allowing access to protected routes.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Role-Based Access Control",
+        level: "Strong",
+        keywords: ["rbac", "roles", "admin", "authorization", "access control", "least privilege", "permissions"],
+        whatItIs:
+          "A method for controlling access based on assigned user roles.",
+        whatItMeans:
+          "RBAC helps enforce least privilege by making sure users only access functions appropriate to their role.",
+        howIUseIt:
+          "I created an admin-only route and validated that a standard user was denied while an admin user was allowed.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Input Validation",
+        level: "Strong",
+        keywords: ["input validation", "zod", "schema", "malformed input", "api", "request body", "validation"],
+        whatItIs:
+          "Checking request data before the application processes it.",
+        whatItMeans:
+          "Input validation reduces unexpected behavior and helps protect APIs from malformed or risky requests.",
+        howIUseIt:
+          "I used Zod schemas to validate login requests and reject weak or malformed input before authentication logic processed the request.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Rate Limiting",
+        level: "Strong",
+        keywords: ["rate limiting", "brute force", "login abuse", "throttling", "express-rate-limit", "api abuse"],
+        whatItIs:
+          "Restricting how many requests a client can make within a defined time window.",
+        whatItMeans:
+          "Rate limiting reduces brute-force attempts, abuse, and noisy attack behavior against authentication endpoints.",
+        howIUseIt:
+          "I applied rate limiting to the API login route and validated that repeated failed attempts were blocked after the threshold.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Security Logging",
+        level: "Strong",
+        keywords: ["logging", "security logs", "events", "failed login", "missing token", "unauthorized access", "monitoring"],
+        whatItIs:
+          "Recording important security events so suspicious behavior can be reviewed and investigated.",
+        whatItMeans:
+          "Security logs support detection, troubleshooting, investigation, and future SIEM integration.",
+        howIUseIt:
+          "I logged invalid input, failed logins, missing tokens, invalid tokens, and unauthorized admin access attempts in the API security project.",
+        projects: ["api-security-assessment-hardening", "logging-strategy"],
       },
       {
         name: "Cloud Security Fundamentals",
@@ -323,8 +395,8 @@ export const skills = [
         whatItMeans:
           "Cloud environments require secure configuration and continuous monitoring.",
         howIUseIt:
-          "I use cloud security concepts when planning architecture, IAM review, and misconfiguration projects.",
-        projects: ["cloud-misconfiguration", "iam-review"],
+          "I use cloud security concepts when planning architecture, IAM review, API deployment, and misconfiguration projects.",
+        projects: ["cloud-misconfiguration", "iam-review", "api-security-assessment-hardening"],
       },
       {
         name: "Cloud Misconfiguration Review",
@@ -352,27 +424,27 @@ export const skills = [
       },
       {
         name: "Least Privilege",
-        level: "Good",
-        keywords: ["least privilege", "access", "permissions", "identity", "roles", "authorization", "iam"],
+        level: "Strong",
+        keywords: ["least privilege", "access", "permissions", "identity", "roles", "authorization", "iam", "rbac"],
         whatItIs:
           "Giving users and systems only the access they need to perform their job.",
         whatItMeans:
           "It limits damage if an account or system is compromised.",
         howIUseIt:
-          "I apply least privilege thinking to architecture, IAM review, and access control recommendations.",
-        projects: ["secure-network-architecture", "iam-review"],
+          "I apply least privilege thinking to network architecture, IAM review, and API role-based access control.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening", "iam-review"],
       },
       {
         name: "Logging Strategy",
-        level: "Planned",
-        keywords: ["logging", "logs", "siem", "monitoring", "events", "coverage", "investigation"],
+        level: "Good",
+        keywords: ["logging", "logs", "siem", "monitoring", "events", "coverage", "investigation", "application logs"],
         whatItIs:
           "Planning what events should be logged, where they should go, and how they should be reviewed.",
         whatItMeans:
           "Good logging makes detection, investigation, and compliance much stronger.",
         howIUseIt:
-          "I plan to design logging coverage across systems, applications, and SIEM workflows.",
-        projects: ["logging-strategy"],
+          "I added security event logging to the API project and plan to expand this into broader SIEM/logging coverage.",
+        projects: ["api-security-assessment-hardening", "logging-strategy"],
       },
     ],
   },
@@ -390,7 +462,7 @@ export const skills = [
           "VM labs let security learners safely simulate attacks, collect evidence, and test defenses.",
         howIUseIt:
           "I use VirtualBox to run Kali, Linux, Windows, and Wazuh lab systems.",
-        projects: ["wazuh-detection-engineering"],
+        projects: ["security-lab-architecture", "wazuh-detection-engineering", "brute-force-detection"],
       },
       {
         name: "Kali Linux",
@@ -415,6 +487,54 @@ export const skills = [
         howIUseIt:
           "I used Hydra to generate SSH brute-force activity for Wazuh detection testing.",
         projects: ["wazuh-detection-engineering", "brute-force-detection"],
+      },
+      {
+        name: "Thunder Client",
+        level: "Good",
+        keywords: ["thunder client", "api testing", "requests", "http", "json", "headers", "bearer token", "testing"],
+        whatItIs:
+          "A VS Code extension used to test API requests and responses.",
+        whatItMeans:
+          "It helps validate how APIs behave, including authentication, headers, request bodies, and security responses.",
+        howIUseIt:
+          "I used Thunder Client to test login, JWT-protected routes, admin access controls, rate limiting, input validation, and security logging evidence.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Node.js / Express",
+        level: "Good",
+        keywords: ["node.js", "node", "express", "api", "backend", "server", "rest api", "application security"],
+        whatItIs:
+          "A JavaScript runtime and web framework used to build backend APIs.",
+        whatItMeans:
+          "Understanding backend API development helps identify where security controls must be implemented.",
+        howIUseIt:
+          "I built a REST API in Node.js/Express and then hardened it with authentication, authorization, validation, rate limiting, and logging.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Zod",
+        level: "Good",
+        keywords: ["zod", "schema validation", "input validation", "typescript", "javascript", "api", "request validation"],
+        whatItIs:
+          "A schema validation library used to verify application input before processing it.",
+        whatItMeans:
+          "Schema validation helps reduce malformed input and unexpected behavior in APIs.",
+        howIUseIt:
+          "I used Zod to enforce login request requirements and return validation errors for invalid input.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
+        name: "Express Rate Limit",
+        level: "Good",
+        keywords: ["express rate limit", "rate limiting", "throttling", "brute force", "api abuse", "login protection"],
+        whatItIs:
+          "An Express middleware used to limit repeated requests to an endpoint.",
+        whatItMeans:
+          "It helps reduce brute-force attempts and abusive request patterns.",
+        howIUseIt:
+          "I used Express Rate Limit to restrict repeated login attempts and validate that abusive behavior was blocked.",
+        projects: ["api-security-assessment-hardening"],
       },
       {
         name: "Nmap",
@@ -467,8 +587,8 @@ export const skills = [
         whatItMeans:
           "Good documentation helps others understand risks, evidence, decisions, and next steps.",
         howIUseIt:
-          "I document project goals, lab setup, commands, screenshots, findings, and lessons learned.",
-        projects: ["secure-network-architecture", "wazuh-detection-engineering"],
+          "I document project goals, lab setup, API controls, commands, screenshots, findings, and lessons learned.",
+        projects: ["secure-network-architecture", "wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
       },
       {
         name: "Evidence Collection",
@@ -479,8 +599,8 @@ export const skills = [
         whatItMeans:
           "Evidence makes a project credible and reviewable.",
         howIUseIt:
-          "I collect Wazuh alerts, terminal output, configuration files, and troubleshooting notes.",
-        projects: ["wazuh-detection-engineering"],
+          "I collect Wazuh alerts, terminal output, API responses, configuration files, and troubleshooting notes.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
       },
       {
         name: "Technical Writeups",
@@ -491,8 +611,8 @@ export const skills = [
         whatItMeans:
           "Writeups show how someone thinks, solves problems, and communicates technical findings.",
         howIUseIt:
-          "I write project case studies that explain the problem, lab, detection logic, and results.",
-        projects: ["wazuh-detection-engineering", "secure-network-architecture"],
+          "I write project case studies that explain the problem, lab, detection logic, API controls, and results.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
         name: "Risk Register Writing",
@@ -515,8 +635,8 @@ export const skills = [
         whatItMeans:
           "Security findings need to be understandable to managers, not just technical teams.",
         howIUseIt:
-          "I summarize project goals, findings, risks, and recommendations in plain language.",
-        projects: ["secure-network-architecture", "wazuh-detection-engineering"],
+          "I summarize project goals, findings, risks, controls, and recommendations in plain language.",
+        projects: ["secure-network-architecture", "wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
       },
     ],
   },
@@ -561,6 +681,18 @@ export const skills = [
         projects: ["cybersecurity-portfolio"],
       },
       {
+        name: "JavaScript / Backend Development",
+        level: "Strong",
+        keywords: ["javascript", "backend", "node.js", "express", "api", "server", "application logic"],
+        whatItIs:
+          "Building backend application logic and APIs using JavaScript-based tools.",
+        whatItMeans:
+          "Backend development knowledge helps identify where authentication, authorization, validation, and logging controls belong.",
+        howIUseIt:
+          "I built a Node.js/Express REST API and used that foundation to demonstrate practical API hardening.",
+        projects: ["api-security-assessment-hardening"],
+      },
+      {
         name: "Full-Stack Development",
         level: "Strong",
         keywords: ["full stack", "frontend", "backend", "api", "web development", "secure design", "application security"],
@@ -570,7 +702,7 @@ export const skills = [
           "It helps me understand how applications are built and where security risks can appear.",
         howIUseIt:
           "I use my development background to understand API security, web risks, architecture, and secure design.",
-        projects: ["cybersecurity-portfolio", "api-security-testing"],
+        projects: ["cybersecurity-portfolio", "api-security-assessment-hardening"],
       },
       {
         name: "Business Intelligence",
@@ -582,7 +714,7 @@ export const skills = [
           "In security, BI thinking helps turn logs, alerts, and findings into useful reports.",
         howIUseIt:
           "I use BI skills to organize findings, explain trends, and make security information easier to understand.",
-        projects: ["logging-strategy", "secure-network-architecture"],
+        projects: ["logging-strategy", "secure-network-architecture", "api-security-assessment-hardening"],
       },
     ],
   },
