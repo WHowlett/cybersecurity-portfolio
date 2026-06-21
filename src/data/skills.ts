@@ -1,66 +1,90 @@
 export const skills = [
   {
-    category: "Security Architecture",
+    category: "Incident Response & SOC Analysis",
     items: [
       {
-        name: "Security Architecture",
+        name: "Incident Response Lifecycle",
         level: "Strong",
-        keywords: ["architecture", "design", "controls", "secure design", "systems", "network design", "resilient"],
+        keywords: ["incident response", "containment", "eradication", "recovery", "post incident review", "lessons learned", "playbook"],
         whatItIs:
-          "The practice of designing systems, networks, applications, and controls so they are secure, resilient, and easier to monitor.",
+          "The structured process of identifying, containing, eradicating, recovering from, and learning from security incidents.",
         whatItMeans:
-          "It helps organizations reduce risk by planning security into the environment instead of adding it later.",
+          "A complete response process helps reduce attacker dwell time, preserve evidence, restore operations safely, and improve the security program after the incident.",
         howIUseIt:
-          "I use architecture diagrams, segmentation, control mapping, API controls, and risk notes to explain how systems should be protected.",
-        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
+          "In the HSS capstone, I documented the full lifecycle from phishing detection through containment, eradication, recovery, post-incident review, and long-term improvement planning.",
+        projects: ["incident-response-capstone-hss"],
       },
       {
-        name: "Risk Assessment",
+        name: "Phishing Analysis",
         level: "Strong",
-        keywords: ["risk", "impact", "likelihood", "mitigation", "controls", "assessment", "business impact"],
+        keywords: ["phishing", "email", "social engineering", "malicious link", "sender", "payroll", "ioc", "initial access"],
         whatItIs:
-          "A process for identifying threats, weaknesses, impact, likelihood, and recommended mitigations.",
+          "Investigating suspicious email activity, social engineering techniques, malicious links, sender impersonation, and related indicators of compromise.",
         whatItMeans:
-          "It helps prioritize the most important security problems instead of treating every issue the same.",
+          "Phishing is one of the most common initial access paths, so analysts need to connect the email evidence to downstream endpoint and network behavior.",
         howIUseIt:
-          "I document risks, explain business impact, and recommend practical controls in architecture and API security projects.",
-        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
+          "I analyzed a payroll-themed phishing scenario involving HR impersonation, urgency, a malicious secure-download.com link, and follow-on PowerShell execution on Workstation-23.",
+        projects: ["incident-response-capstone-hss", "phishing-analysis"],
       },
       {
-        name: "Threat Modeling",
-        level: "Good",
-        keywords: ["threats", "attack paths", "trust boundaries", "abuse cases", "STRIDE", "assets", "defensive controls"],
-        whatItIs:
-          "A structured way to think through how a system could be attacked.",
-        whatItMeans:
-          "It helps security teams identify abuse cases before attackers do.",
-        howIUseIt:
-          "I use it to think through assets, trust boundaries, attack paths, and defensive controls for networks and APIs.",
-        projects: ["secure-network-architecture", "api-security-assessment-hardening"],
-      },
-      {
-        name: "Network Segmentation",
+        name: "PowerShell Investigation",
         level: "Strong",
-        keywords: ["segmentation", "zones", "network", "blast radius", "isolation", "access control", "servers"],
+        keywords: ["powershell", "Invoke-WebRequest", "payload", "script", "windows event logs", "event id 4688", "execution"],
         whatItIs:
-          "The practice of separating systems into zones so access can be controlled and limited.",
+          "Reviewing PowerShell activity, command execution, downloaded scripts, and Windows process creation evidence to identify suspicious behavior.",
         whatItMeans:
-          "It reduces blast radius if one system is compromised.",
+          "Attackers commonly abuse PowerShell for payload delivery, credential theft, persistence, and command execution, so PowerShell evidence is important during investigations.",
         howIUseIt:
-          "I use segmentation concepts when designing secure network layouts and separating users, servers, and monitoring systems.",
-        projects: ["secure-network-architecture", "zero-trust-architecture"],
+          "In the HSS capstone, I tied Event ID 4688 and an Invoke-WebRequest command to the malicious payload download and used that activity to reconstruct the attack sequence.",
+        projects: ["incident-response-capstone-hss", "powershell-threat-hunt"],
       },
       {
-        name: "Zero Trust Architecture",
-        level: "Planned",
-        keywords: ["zero trust", "identity", "least privilege", "verify", "never trust", "access control", "segmentation"],
+        name: "Lateral Movement Analysis",
+        level: "Strong",
+        keywords: ["lateral movement", "smb", "rdp", "ssh", "psexec", "attack path", "internal movement", "dmz"],
         whatItIs:
-          "A security model based on never automatically trusting users, devices, or networks.",
+          "Analyzing attempts by an attacker to move from an initially compromised system to other internal systems.",
         whatItMeans:
-          "It requires verification, least privilege, monitoring, and strong access control.",
+          "Lateral movement can turn a single endpoint compromise into a wider enterprise breach, especially when payroll, domain, or development systems are reachable.",
         howIUseIt:
-          "I plan to build a project showing identity-aware access, segmentation, and logging strategy.",
-        projects: ["zero-trust-architecture"],
+          "I analyzed SMB, RDP, PsExec, and SSH activity from Workstation-23 toward HR-SQL01 and DevAppServer to document the attack path and business risk.",
+        projects: ["incident-response-capstone-hss", "lateral-movement-detection"],
+      },
+      {
+        name: "Indicators of Compromise",
+        level: "Strong",
+        keywords: ["ioc", "indicators", "domain", "ip address", "payload", "artifact", "command", "account", "protocol"],
+        whatItIs:
+          "Identifying and organizing suspicious IPs, domains, commands, accounts, files, protocols, and systems connected to attacker activity.",
+        whatItMeans:
+          "Good IoC documentation helps responders block malicious infrastructure, scope the incident, search for related activity, and communicate findings clearly.",
+        howIUseIt:
+          "I documented malicious domains, the 45.77.33.88 external IP, payload.ps1, PsExecsvc, Invoke-WebRequest, affected systems, protocols, and targeted accounts in the HSS case study.",
+        projects: ["incident-response-capstone-hss", "ioc-threat-intel"],
+      },
+      {
+        name: "MITRE ATT&CK Mapping",
+        level: "Strong",
+        keywords: ["MITRE", "ATT&CK", "initial access", "execution", "credential access", "lateral movement", "command and control", "tactics"],
+        whatItIs:
+          "Mapping observed attacker behavior to standardized ATT&CK tactics and techniques.",
+        whatItMeans:
+          "ATT&CK mapping makes incident findings easier to compare, report, and turn into detection or control improvements.",
+        howIUseIt:
+          "I mapped the HSS attack chain across Initial Access, Execution, Credential Access, Discovery, Lateral Movement, Command and Control, and attempted privilege escalation.",
+        projects: ["incident-response-capstone-hss", "wazuh-detection-engineering", "brute-force-detection"],
+      },
+      {
+        name: "Alert Triage & Severity Assessment",
+        level: "Strong",
+        keywords: ["alerts", "triage", "severity", "high severity", "scope", "business impact", "investigation", "malware"],
+        whatItIs:
+          "Reviewing security alerts and evidence to determine severity, scope, business impact, and next response actions.",
+        whatItMeans:
+          "Triage helps separate isolated alerts from real incidents that require containment, escalation, and leadership awareness.",
+        howIUseIt:
+          "I classified the HSS event as high severity based on phishing success, malicious PowerShell execution, outbound suspicious traffic, credential harvesting indicators, and lateral movement attempts.",
+        projects: ["incident-response-capstone-hss", "wazuh-detection-engineering", "brute-force-detection", "malware-alert-triage"],
       },
     ],
   },
@@ -89,8 +113,8 @@ export const skills = [
         whatItMeans:
           "It turns raw logs and security events into useful alerts and investigation signals.",
         howIUseIt:
-          "I create custom Wazuh rules, simulate attacks, test alert behavior, tune detection logic, and capture security events from applications.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
+          "I create custom Wazuh rules, simulate attacks, test alert behavior, tune detection logic, and connect evidence to incident response reporting.",
+        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening", "incident-response-capstone-hss"],
       },
       {
         name: "Custom Rule Development",
@@ -101,20 +125,32 @@ export const skills = [
         whatItMeans:
           "Custom rules help detect activity that default tools may miss.",
         howIUseIt:
-          "I write and test custom Wazuh rules for attack scenarios such as SSH brute-force attempts.",
+          "I write and test custom Wazuh rules for attack scenarios such as SSH brute-force attempts and use those detections as evidence in portfolio case studies.",
         projects: ["wazuh-detection-engineering", "brute-force-detection"],
       },
       {
-        name: "Alert Analysis",
+        name: "Log Analysis",
         level: "Strong",
-        keywords: ["alerts", "triage", "analysis", "false positive", "investigation", "logs", "findings"],
+        keywords: ["logs", "auth logs", "events", "timeline", "investigation", "wazuh", "zeek", "windows event logs", "evidence"],
         whatItIs:
-          "Reviewing security alerts to understand what happened, why it triggered, and what action is needed.",
+          "Reviewing system, application, endpoint, and network logs to understand activity.",
         whatItMeans:
-          "It helps separate real threats from noise.",
+          "Logs are the evidence behind detection, investigation, incident response, and timeline reconstruction.",
         howIUseIt:
-          "I analyze Wazuh alerts, confirm source activity, review logs, and document findings.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "malware-alert-triage"],
+          "I review authentication logs, Wazuh alerts, Windows Event Logs, Zeek telemetry, API security logs, command output, and timelines to explain what happened.",
+        projects: ["incident-response-capstone-hss", "wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening", "web-log-analysis"],
+      },
+      {
+        name: "Network Telemetry Review",
+        level: "Strong",
+        keywords: ["zeek", "snort", "network logs", "dns", "http", "smb", "rdp", "ssh", "telemetry"],
+        whatItIs:
+          "Reviewing network alerts and connection records to understand communication patterns and suspicious traffic.",
+        whatItMeans:
+          "Network telemetry helps analysts see attacker movement, external communication, and connections between compromised and targeted systems.",
+        howIUseIt:
+          "In the HSS capstone, I used Snort and Zeek evidence to connect PowerShell execution, outbound HTTP traffic, DNS activity, SMB/RDP attempts, and SSH activity.",
+        projects: ["incident-response-capstone-hss", "wazuh-detection-engineering"],
       },
       {
         name: "SIEM Alert Tuning",
@@ -128,173 +164,83 @@ export const skills = [
           "I plan to tune Wazuh alerts by adjusting rules, severity, thresholds, and expected behavior.",
         projects: ["siem-alert-tuning"],
       },
-      {
-        name: "Log Analysis",
-        level: "Strong",
-        keywords: ["logs", "auth logs", "events", "timeline", "investigation", "wazuh", "evidence", "application logs", "security logs"],
-        whatItIs:
-          "Reviewing system, application, and security logs to understand activity.",
-        whatItMeans:
-          "Logs are the evidence behind detection, investigation, and incident response.",
-        howIUseIt:
-          "I review authentication logs, Wazuh alerts, API security logs, command output, and timelines to explain what happened.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening", "web-log-analysis"],
-      },
     ],
   },
 
   {
-    category: "SOC & Threat Analysis",
+    category: "Security Architecture & Risk",
     items: [
       {
-        name: "Brute Force Detection",
+        name: "Security Architecture",
         level: "Strong",
-        keywords: ["brute force", "ssh", "hydra", "login attempts", "password attacks", "authentication", "unauthorized access"],
+        keywords: ["architecture", "design", "controls", "secure design", "systems", "network design", "resilient"],
         whatItIs:
-          "Identifying repeated login attempts that may indicate password guessing or credential attacks.",
+          "The practice of designing systems, networks, applications, and controls so they are secure, resilient, and easier to monitor.",
         whatItMeans:
-          "It helps detect unauthorized access attempts early.",
+          "It helps organizations reduce risk by planning security into the environment instead of adding it later.",
         howIUseIt:
-          "I simulated SSH brute-force activity with Hydra and validated detection through Wazuh alerts. I also implemented API login rate limiting to reduce brute-force abuse risk.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
+          "I use architecture diagrams, segmentation, control mapping, API controls, and risk notes to explain how systems should be protected.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening", "incident-response-capstone-hss"],
       },
       {
-        name: "Phishing Analysis",
-        level: "Planned",
-        keywords: ["phishing", "email", "headers", "links", "attachments", "sender", "ioc"],
-        whatItIs:
-          "Investigating suspicious emails, links, senders, headers, attachments, and indicators.",
-        whatItMeans:
-          "Phishing is one of the most common entry points for attackers.",
-        howIUseIt:
-          "I plan to build a project analyzing phishing artifacts and documenting indicators of compromise.",
-        projects: ["phishing-analysis"],
-      },
-      {
-        name: "PowerShell Threat Hunting",
-        level: "Planned",
-        keywords: ["powershell", "threat hunting", "windows logs", "sysmon", "execution", "persistence", "defense evasion"],
-        whatItIs:
-          "Searching for suspicious PowerShell activity that may indicate malicious behavior.",
-        whatItMeans:
-          "Attackers often use PowerShell for execution, persistence, and defense evasion.",
-        howIUseIt:
-          "I plan to use Windows logs, Sysmon, and SIEM alerts to hunt for suspicious PowerShell patterns.",
-        projects: ["powershell-threat-hunt"],
-      },
-      {
-        name: "Lateral Movement Detection",
-        level: "Planned",
-        keywords: ["lateral movement", "internal movement", "network", "compromise", "attack path", "windows", "siem"],
-        whatItIs:
-          "Detecting when an attacker moves from one system to another inside a network.",
-        whatItMeans:
-          "It is important because many breaches expand after the first compromise.",
-        howIUseIt:
-          "I plan to simulate movement activity and document detection opportunities in logs and SIEM alerts.",
-        projects: ["lateral-movement-detection"],
-      },
-      {
-        name: "IOC Threat Intelligence",
-        level: "Planned",
-        keywords: ["ioc", "threat intel", "ip", "domain", "hash", "indicators", "enrichment"],
-        whatItIs:
-          "Using indicators of compromise such as IPs, domains, hashes, and file names to investigate threats.",
-        whatItMeans:
-          "IOCs help analysts connect activity to known suspicious behavior.",
-        howIUseIt:
-          "I plan to enrich suspicious activity with threat intelligence and document investigation steps.",
-        projects: ["ioc-threat-intel"],
-      },
-      {
-        name: "Malware Alert Triage",
-        level: "Planned",
-        keywords: ["malware", "triage", "alerts", "containment", "severity", "incident", "analysis"],
-        whatItIs:
-          "Reviewing malware-related alerts to decide severity, scope, and next steps.",
-        whatItMeans:
-          "Triage helps determine whether an alert is benign, suspicious, or a real incident.",
-        howIUseIt:
-          "I plan to document alert review, evidence collection, and recommended containment steps.",
-        projects: ["malware-alert-triage"],
-      },
-    ],
-  },
-
-  {
-    category: "System Hardening",
-    items: [
-      {
-        name: "Linux Hardening",
-        level: "Planned",
-        keywords: ["linux", "hardening", "ssh", "permissions", "firewall", "updates", "audit"],
-        whatItIs:
-          "Securing Linux systems by reducing unnecessary services, improving access control, and reviewing configurations.",
-        whatItMeans:
-          "Hardening reduces attack surface and makes systems more resistant to compromise.",
-        howIUseIt:
-          "I plan to document SSH security, user permissions, firewall settings, updates, and audit checks.",
-        projects: ["linux-hardening"],
-      },
-      {
-        name: "Windows Hardening",
-        level: "Planned",
-        keywords: ["windows", "hardening", "sysmon", "policies", "baselines", "endpoint", "logging"],
-        whatItIs:
-          "Securing Windows systems through account controls, logging, policies, and defensive configuration.",
-        whatItMeans:
-          "It reduces common weaknesses attackers use on endpoints and servers.",
-        howIUseIt:
-          "I plan to review Windows settings, Sysmon logging, local policies, and security baselines.",
-        projects: ["windows-hardening"],
-      },
-      {
-        name: "SSH Security",
+        name: "Risk Assessment",
         level: "Strong",
-        keywords: ["ssh", "authentication", "remote access", "brute force", "linux", "wazuh", "logs"],
+        keywords: ["risk", "impact", "likelihood", "mitigation", "controls", "assessment", "business impact"],
         whatItIs:
-          "Protecting SSH access through secure configuration, monitoring, and authentication controls.",
+          "A process for identifying threats, weaknesses, impact, likelihood, and recommended mitigations.",
         whatItMeans:
-          "SSH is commonly targeted, so it needs strong protection and monitoring.",
+          "It helps prioritize the most important security problems instead of treating every issue the same.",
         howIUseIt:
-          "I use SSH logs in my Wazuh lab to detect brute-force attempts and validate alerts.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "linux-hardening"],
+          "I document risks, explain business impact, and recommend practical controls in architecture, API security, and incident response projects.",
+        projects: ["incident-response-capstone-hss", "secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
-        name: "Firewall Review",
-        level: "Planned",
-        keywords: ["firewall", "rules", "ports", "traffic", "network boundaries", "exposure", "access"],
+        name: "Threat Modeling",
+        level: "Good",
+        keywords: ["threats", "attack paths", "trust boundaries", "abuse cases", "STRIDE", "assets", "defensive controls"],
         whatItIs:
-          "Reviewing firewall rules to ensure only necessary traffic is allowed.",
+          "A structured way to think through how a system could be attacked.",
         whatItMeans:
-          "Firewall reviews help reduce exposure and enforce network boundaries.",
+          "It helps security teams identify abuse cases before attackers do.",
         howIUseIt:
-          "I plan to document rule purpose, risk, allowed services, and recommended changes.",
-        projects: ["firewall-review"],
+          "I use it to think through assets, trust boundaries, attack paths, likely attacker goals, and defensive controls for networks and APIs.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening", "incident-response-capstone-hss"],
       },
       {
-        name: "Nginx Security",
-        level: "Planned",
-        keywords: ["nginx", "web server", "tls", "headers", "logging", "access controls", "web security"],
+        name: "Network Segmentation",
+        level: "Strong",
+        keywords: ["segmentation", "zones", "network", "blast radius", "isolation", "access control", "servers", "dmz"],
         whatItIs:
-          "Securing an Nginx web server through configuration, headers, TLS, logging, and access controls.",
+          "The practice of separating systems into zones so access can be controlled and limited.",
         whatItMeans:
-          "Web servers are exposed to the internet and need careful configuration.",
+          "It reduces blast radius if one system is compromised and helps restrict lateral movement toward high-value systems.",
         howIUseIt:
-          "I plan to review Nginx security settings and document hardening recommendations.",
-        projects: ["nginx-security"],
+          "I use segmentation concepts when designing secure network layouts and when recommending restrictions between Finance, HR, IT, and Development DMZ systems.",
+        projects: ["incident-response-capstone-hss", "secure-network-architecture", "zero-trust-architecture"],
       },
       {
-        name: "Vulnerability Scanning",
-        level: "Planned",
-        keywords: ["vulnerability", "scan", "nmap", "weaknesses", "misconfiguration", "remediation", "patching"],
+        name: "Security Roadmap Planning",
+        level: "Strong",
+        keywords: ["roadmap", "recommendations", "maturity", "remediation", "security improvements", "continuous improvement"],
         whatItIs:
-          "Using tools to identify known weaknesses, outdated software, and misconfigurations.",
+          "Prioritizing security improvements over time based on risk, visibility gaps, and business impact.",
         whatItMeans:
-          "It helps prioritize remediation before attackers exploit weaknesses.",
+          "A roadmap turns an investigation or assessment into practical next steps that improve security maturity.",
         howIUseIt:
-          "I plan to run scans, validate results, rank risk, and document remediation steps.",
-        projects: ["vulnerability-scan"],
+          "I used the HSS post-incident review to recommend SIEM deployment, MFA, automated offboarding, PowerShell logging, Linux monitoring, segmentation, phishing training, and tabletop exercises.",
+        projects: ["incident-response-capstone-hss", "secure-network-architecture"],
+      },
+      {
+        name: "Zero Trust Architecture",
+        level: "Planned",
+        keywords: ["zero trust", "identity", "least privilege", "verify", "never trust", "access control", "segmentation"],
+        whatItIs:
+          "A security model based on never automatically trusting users, devices, or networks.",
+        whatItMeans:
+          "It requires verification, least privilege, monitoring, segmentation, and strong access control.",
+        howIUseIt:
+          "I plan to build a dedicated project showing identity-aware access, segmentation, and logging strategy.",
+        projects: ["zero-trust-architecture"],
       },
     ],
   },
@@ -327,52 +273,28 @@ export const skills = [
         projects: ["api-security-assessment-hardening"],
       },
       {
-        name: "JWT Authentication",
-        level: "Strong",
-        keywords: ["jwt", "json web token", "bearer token", "token", "login", "session", "authorization header"],
+        name: "Identity Lifecycle Management",
+        level: "Good",
+        keywords: ["identity", "offboarding", "deprovisioning", "active directory", "stale accounts", "former employee", "access review"],
         whatItIs:
-          "A token-based authentication method used to prove a user has successfully logged in and can access protected API routes.",
+          "Managing user accounts from creation through role changes, termination, disablement, and periodic access review.",
         whatItMeans:
-          "JWTs help APIs avoid exposing protected data without a valid token, but they must be validated carefully.",
+          "Weak identity lifecycle controls can leave stale accounts active and create opportunities for attackers to reuse credentials.",
         howIUseIt:
-          "I configured login to issue JWTs and required a Bearer token in the Authorization header before allowing access to protected routes.",
-        projects: ["api-security-assessment-hardening"],
+          "In the HSS capstone, I identified stale jcampbell credentials and recommended automated offboarding, account audits, MFA, and stronger access governance.",
+        projects: ["incident-response-capstone-hss", "iam-review"],
       },
       {
-        name: "Role-Based Access Control",
+        name: "Least Privilege",
         level: "Strong",
-        keywords: ["rbac", "roles", "admin", "authorization", "access control", "least privilege", "permissions"],
+        keywords: ["least privilege", "access", "permissions", "identity", "roles", "authorization", "iam", "rbac"],
         whatItIs:
-          "A method for controlling access based on assigned user roles.",
+          "Giving users and systems only the access they need to perform their job.",
         whatItMeans:
-          "RBAC helps enforce least privilege by making sure users only access functions appropriate to their role.",
+          "It limits damage if an account or system is compromised.",
         howIUseIt:
-          "I created an admin-only route and validated that a standard user was denied while an admin user was allowed.",
-        projects: ["api-security-assessment-hardening"],
-      },
-      {
-        name: "Input Validation",
-        level: "Strong",
-        keywords: ["input validation", "zod", "schema", "malformed input", "api", "request body", "validation"],
-        whatItIs:
-          "Checking request data before the application processes it.",
-        whatItMeans:
-          "Input validation reduces unexpected behavior and helps protect APIs from malformed or risky requests.",
-        howIUseIt:
-          "I used Zod schemas to validate login requests and reject weak or malformed input before authentication logic processed the request.",
-        projects: ["api-security-assessment-hardening"],
-      },
-      {
-        name: "Rate Limiting",
-        level: "Strong",
-        keywords: ["rate limiting", "brute force", "login abuse", "throttling", "express-rate-limit", "api abuse"],
-        whatItIs:
-          "Restricting how many requests a client can make within a defined time window.",
-        whatItMeans:
-          "Rate limiting reduces brute-force attempts, abuse, and noisy attack behavior against authentication endpoints.",
-        howIUseIt:
-          "I applied rate limiting to the API login route and validated that repeated failed attempts were blocked after the threshold.",
-        projects: ["api-security-assessment-hardening"],
+          "I apply least privilege thinking to network architecture, API role-based access control, and incident response recommendations involving privileged and stale accounts.",
+        projects: ["secure-network-architecture", "api-security-assessment-hardening", "incident-response-capstone-hss", "iam-review"],
       },
       {
         name: "Security Logging",
@@ -381,10 +303,10 @@ export const skills = [
         whatItIs:
           "Recording important security events so suspicious behavior can be reviewed and investigated.",
         whatItMeans:
-          "Security logs support detection, troubleshooting, investigation, and future SIEM integration.",
+          "Security logs support detection, troubleshooting, investigation, future SIEM integration, and evidence-based reporting.",
         howIUseIt:
-          "I logged invalid input, failed logins, missing tokens, invalid tokens, and unauthorized admin access attempts in the API security project.",
-        projects: ["api-security-assessment-hardening", "logging-strategy"],
+          "I logged API security events in my API project and used log evidence from Windows, Zeek, Snort, and honeypots in the HSS incident response capstone.",
+        projects: ["incident-response-capstone-hss", "api-security-assessment-hardening", "logging-strategy"],
       },
       {
         name: "Cloud Security Fundamentals",
@@ -399,18 +321,6 @@ export const skills = [
         projects: ["cloud-misconfiguration", "iam-review", "api-security-assessment-hardening"],
       },
       {
-        name: "Cloud Misconfiguration Review",
-        level: "Planned",
-        keywords: ["cloud", "misconfiguration", "public exposure", "permissions", "logging", "storage", "insecure settings"],
-        whatItIs:
-          "Finding insecure cloud settings such as public exposure, weak permissions, or missing logging.",
-        whatItMeans:
-          "Misconfigurations are a common cause of cloud security incidents.",
-        howIUseIt:
-          "I plan to document cloud findings, risk impact, and secure configuration recommendations.",
-        projects: ["cloud-misconfiguration"],
-      },
-      {
         name: "IAM Review",
         level: "Planned",
         keywords: ["iam", "identity", "access", "roles", "permissions", "least privilege", "accounts"],
@@ -419,32 +329,86 @@ export const skills = [
         whatItMeans:
           "Strong IAM reduces the chance of privilege abuse and unauthorized access.",
         howIUseIt:
-          "I plan to review least privilege, excessive permissions, and account access risks.",
+          "I plan to build a dedicated IAM review project focused on least privilege, excessive permissions, and account access risks.",
         projects: ["iam-review"],
       },
+    ],
+  },
+
+  {
+    category: "System Hardening & Infrastructure",
+    items: [
       {
-        name: "Least Privilege",
+        name: "SSH Security",
         level: "Strong",
-        keywords: ["least privilege", "access", "permissions", "identity", "roles", "authorization", "iam", "rbac"],
+        keywords: ["ssh", "authentication", "remote access", "brute force", "linux", "wazuh", "logs", "dmz"],
         whatItIs:
-          "Giving users and systems only the access they need to perform their job.",
+          "Protecting SSH access through secure configuration, monitoring, and authentication controls.",
         whatItMeans:
-          "It limits damage if an account or system is compromised.",
+          "SSH is commonly targeted, so it needs strong protection, monitoring, and account hygiene.",
         howIUseIt:
-          "I apply least privilege thinking to network architecture, IAM review, and API role-based access control.",
-        projects: ["secure-network-architecture", "api-security-assessment-hardening", "iam-review"],
+          "I use SSH logs in my Wazuh lab to detect brute-force attempts and analyzed SSH attempts toward DevAppServer in the HSS capstone.",
+        projects: ["incident-response-capstone-hss", "wazuh-detection-engineering", "brute-force-detection", "linux-hardening"],
       },
       {
-        name: "Logging Strategy",
+        name: "Linux Monitoring",
         level: "Good",
-        keywords: ["logging", "logs", "siem", "monitoring", "events", "coverage", "investigation", "application logs"],
+        keywords: ["linux", "monitoring", "ssh", "edr", "dmz", "logs", "authentication", "endpoint visibility"],
         whatItIs:
-          "Planning what events should be logged, where they should go, and how they should be reviewed.",
+          "Collecting and reviewing Linux authentication, process, file integrity, and endpoint telemetry.",
         whatItMeans:
-          "Good logging makes detection, investigation, and compliance much stronger.",
+          "Linux systems in DMZ or development environments can be high-value targets and need strong visibility.",
         howIUseIt:
-          "I added security event logging to the API project and plan to expand this into broader SIEM/logging coverage.",
-        projects: ["api-security-assessment-hardening", "logging-strategy"],
+          "The HSS capstone identified limited Linux monitoring around DevAppServer and recommended expanded EDR, SSH auditing, and centralized logging.",
+        projects: ["incident-response-capstone-hss", "linux-hardening"],
+      },
+      {
+        name: "Windows Hardening & Logging",
+        level: "Good",
+        keywords: ["windows", "hardening", "powershell logging", "sysmon", "policies", "baselines", "endpoint", "logging"],
+        whatItIs:
+          "Securing Windows systems through account controls, logging, policies, baselines, and defensive configuration.",
+        whatItMeans:
+          "Windows endpoints are common initial compromise points, and logging is critical for detection and investigation.",
+        howIUseIt:
+          "The HSS capstone identified disabled PowerShell logging as a visibility gap and recommended standardized endpoint telemetry across Windows systems.",
+        projects: ["incident-response-capstone-hss", "windows-hardening"],
+      },
+      {
+        name: "Firewall & Access Review",
+        level: "Good",
+        keywords: ["firewall", "rules", "ports", "traffic", "network boundaries", "exposure", "access", "smb", "rdp", "ssh"],
+        whatItIs:
+          "Reviewing firewall rules and allowed protocols to ensure only necessary traffic is permitted.",
+        whatItMeans:
+          "Firewall and access reviews help reduce exposure and restrict lateral movement paths.",
+        howIUseIt:
+          "In the HSS capstone, I recommended restricting SMB, RDP, and SSH traffic between zones and tightening segmentation around Finance, HR, and DMZ systems.",
+        projects: ["incident-response-capstone-hss", "firewall-review", "secure-network-architecture"],
+      },
+      {
+        name: "Vulnerability Scanning",
+        level: "Planned",
+        keywords: ["vulnerability", "scan", "nmap", "weaknesses", "misconfiguration", "remediation", "patching"],
+        whatItIs:
+          "Using tools to identify known weaknesses, outdated software, exposed services, and misconfigurations.",
+        whatItMeans:
+          "It helps prioritize remediation before attackers exploit weaknesses.",
+        howIUseIt:
+          "I plan to run scans, validate results, rank risk, and document remediation steps.",
+        projects: ["vulnerability-scan"],
+      },
+      {
+        name: "Nginx Security",
+        level: "Planned",
+        keywords: ["nginx", "web server", "tls", "headers", "logging", "access controls", "web security"],
+        whatItIs:
+          "Securing an Nginx web server through configuration, headers, TLS, logging, and access controls.",
+        whatItMeans:
+          "Web servers are exposed to the internet and need careful configuration.",
+        howIUseIt:
+          "I plan to review Nginx security settings and document hardening recommendations.",
+        projects: ["nginx-security"],
       },
     ],
   },
@@ -461,7 +425,7 @@ export const skills = [
         whatItMeans:
           "VM labs let security learners safely simulate attacks, collect evidence, and test defenses.",
         howIUseIt:
-          "I use VirtualBox to run Kali, Linux, Windows, and Wazuh lab systems.",
+          "I use VirtualBox to run Kali, Linux, Windows, and Wazuh lab systems for detection and security testing projects.",
         projects: ["security-lab-architecture", "wazuh-detection-engineering", "brute-force-detection"],
       },
       {
@@ -513,30 +477,6 @@ export const skills = [
         projects: ["api-security-assessment-hardening"],
       },
       {
-        name: "Zod",
-        level: "Good",
-        keywords: ["zod", "schema validation", "input validation", "typescript", "javascript", "api", "request validation"],
-        whatItIs:
-          "A schema validation library used to verify application input before processing it.",
-        whatItMeans:
-          "Schema validation helps reduce malformed input and unexpected behavior in APIs.",
-        howIUseIt:
-          "I used Zod to enforce login request requirements and return validation errors for invalid input.",
-        projects: ["api-security-assessment-hardening"],
-      },
-      {
-        name: "Express Rate Limit",
-        level: "Good",
-        keywords: ["express rate limit", "rate limiting", "throttling", "brute force", "api abuse", "login protection"],
-        whatItIs:
-          "An Express middleware used to limit repeated requests to an endpoint.",
-        whatItMeans:
-          "It helps reduce brute-force attempts and abusive request patterns.",
-        howIUseIt:
-          "I used Express Rate Limit to restrict repeated login attempts and validate that abusive behavior was blocked.",
-        projects: ["api-security-assessment-hardening"],
-      },
-      {
         name: "Nmap",
         level: "Good",
         keywords: ["nmap", "scan", "ports", "services", "network discovery", "attack surface", "recon"],
@@ -546,175 +486,49 @@ export const skills = [
           "It helps identify exposed services and possible attack surface.",
         howIUseIt:
           "I use Nmap concepts for discovery, validation, and vulnerability scan planning.",
-        projects: ["vulnerability-scan", "linux-hardening"],
-      },
-      {
-        name: "Wireshark",
-        level: "Good",
-        keywords: ["wireshark", "packet analysis", "network traffic", "traffic analysis", "pcap", "protocols"],
-        whatItIs:
-          "A packet analysis tool used to inspect network traffic.",
-        whatItMeans:
-          "It helps analysts understand communication patterns and suspicious network behavior.",
-        howIUseIt:
-          "I plan to use Wireshark in phishing, web log, and traffic analysis projects.",
-        projects: ["web-log-analysis", "phishing-analysis"],
-      },
-      {
-        name: "Sysmon",
-        level: "Planned",
-        keywords: ["sysmon", "windows logs", "endpoint monitoring", "process events", "powershell", "windows security"],
-        whatItIs:
-          "A Windows system monitoring tool that records detailed endpoint activity.",
-        whatItMeans:
-          "It gives defenders deeper visibility into process, network, and file activity.",
-        howIUseIt:
-          "I plan to use Sysmon logs for Windows hardening and PowerShell threat hunting.",
-        projects: ["windows-hardening", "powershell-threat-hunt"],
+        projects: ["vulnerability-scan", "security-lab-architecture"],
       },
     ],
   },
 
   {
-    category: "Documentation & Reporting",
+    category: "Security Communication & Documentation",
     items: [
       {
-        name: "Security Documentation",
+        name: "Executive Security Reporting",
         level: "Strong",
-        keywords: ["documentation", "reports", "writeups", "findings", "screenshots", "lessons learned", "security reports"],
+        keywords: ["executive reporting", "summary", "business risk", "recommendations", "leadership", "communication"],
         whatItIs:
-          "Writing clear technical and professional security documents.",
+          "Explaining security findings in a way that connects technical evidence to business risk and practical decisions.",
         whatItMeans:
-          "Good documentation helps others understand risks, evidence, decisions, and next steps.",
+          "Security work becomes more valuable when leaders can understand what happened, why it matters, and what should happen next.",
         howIUseIt:
-          "I document project goals, lab setup, API controls, commands, screenshots, findings, and lessons learned.",
-        projects: ["secure-network-architecture", "wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
+          "I produced an executive-ready incident response report, a 12-slide presentation, and an expanded project pitch for the HSS capstone.",
+        projects: ["incident-response-capstone-hss", "secure-network-architecture", "api-security-assessment-hardening"],
       },
       {
-        name: "Evidence Collection",
+        name: "Technical Documentation",
         level: "Strong",
-        keywords: ["evidence", "screenshots", "logs", "alerts", "commands", "timeline", "proof"],
+        keywords: ["documentation", "evidence", "screenshots", "logs", "findings", "report", "case study"],
         whatItIs:
-          "Collecting screenshots, logs, alerts, commands, and timelines to prove what happened.",
+          "Documenting the work performed, evidence reviewed, decisions made, and results produced.",
         whatItMeans:
-          "Evidence makes a project credible and reviewable.",
+          "Good documentation helps reviewers understand both the technical result and the reasoning process behind it.",
         howIUseIt:
-          "I collect Wazuh alerts, terminal output, API responses, configuration files, and troubleshooting notes.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
+          "I document each completed project as a case study with objectives, scenario, evidence, findings, troubleshooting, and recommendations.",
+        projects: ["incident-response-capstone-hss", "brute-force-detection", "wazuh-detection-engineering", "api-security-assessment-hardening"],
       },
       {
-        name: "Technical Writeups",
+        name: "Business Impact Analysis",
         level: "Strong",
-        keywords: ["writeups", "case studies", "technical writing", "lab notes", "process", "results", "lessons learned"],
+        keywords: ["business impact", "risk", "payroll", "pii", "healthcare", "regulatory", "operational disruption"],
         whatItIs:
-          "Clear explanations of technical work, including setup, process, results, and lessons learned.",
+          "Connecting technical security findings to operational, financial, regulatory, and reputational impact.",
         whatItMeans:
-          "Writeups show how someone thinks, solves problems, and communicates technical findings.",
+          "Business impact helps prioritize response actions and communicate why security controls matter.",
         howIUseIt:
-          "I write project case studies that explain the problem, lab, detection logic, API controls, and results.",
-        projects: ["wazuh-detection-engineering", "brute-force-detection", "secure-network-architecture", "api-security-assessment-hardening"],
-      },
-      {
-        name: "Risk Register Writing",
-        level: "Good",
-        keywords: ["risk register", "risk", "severity", "likelihood", "impact", "recommendations", "tracking"],
-        whatItIs:
-          "Documenting risks, severity, likelihood, impact, and recommended actions.",
-        whatItMeans:
-          "Risk registers help track and prioritize security work.",
-        howIUseIt:
-          "I use risk registers to support architecture and assessment-style projects.",
-        projects: ["secure-network-architecture"],
-      },
-      {
-        name: "Executive Summaries",
-        level: "Good",
-        keywords: ["executive summary", "plain language", "management", "summary", "findings", "recommendations"],
-        whatItIs:
-          "Short, clear summaries written for non-technical readers.",
-        whatItMeans:
-          "Security findings need to be understandable to managers, not just technical teams.",
-        howIUseIt:
-          "I summarize project goals, findings, risks, controls, and recommendations in plain language.",
-        projects: ["secure-network-architecture", "wazuh-detection-engineering", "brute-force-detection", "api-security-assessment-hardening"],
-      },
-    ],
-  },
-
-  {
-    category: "Engineering & Development Background",
-    items: [
-      {
-        name: "Next.js",
-        level: "Strong",
-        keywords: ["next.js", "nextjs", "react framework", "web app", "portfolio", "frontend", "app router"],
-        whatItIs:
-          "A React framework used to build modern web applications and websites.",
-        whatItMeans:
-          "For cybersecurity, development knowledge helps with secure design, API security, and technical communication.",
-        howIUseIt:
-          "I use Next.js to build this cybersecurity portfolio and organize projects, skills, and evidence.",
-        projects: ["cybersecurity-portfolio"],
-      },
-      {
-        name: "React",
-        level: "Strong",
-        keywords: ["react", "components", "ui", "frontend", "interface", "project cards", "skill cards"],
-        whatItIs:
-          "A JavaScript library for building reusable user interface components.",
-        whatItMeans:
-          "It helps me build structured, maintainable portfolio pages and security dashboards.",
-        howIUseIt:
-          "I use React components for project cards, skill cards, navigation, and portfolio layout.",
-        projects: ["cybersecurity-portfolio"],
-      },
-      {
-        name: "TypeScript",
-        level: "Good",
-        keywords: ["typescript", "types", "javascript", "type safety", "data structure", "code quality"],
-        whatItIs:
-          "A typed version of JavaScript that helps catch errors and improve code quality.",
-        whatItMeans:
-          "Strong typing supports safer, more maintainable applications.",
-        howIUseIt:
-          "I use TypeScript to structure project and skill data in my portfolio.",
-        projects: ["cybersecurity-portfolio"],
-      },
-      {
-        name: "JavaScript / Backend Development",
-        level: "Strong",
-        keywords: ["javascript", "backend", "node.js", "express", "api", "server", "application logic"],
-        whatItIs:
-          "Building backend application logic and APIs using JavaScript-based tools.",
-        whatItMeans:
-          "Backend development knowledge helps identify where authentication, authorization, validation, and logging controls belong.",
-        howIUseIt:
-          "I built a Node.js/Express REST API and used that foundation to demonstrate practical API hardening.",
-        projects: ["api-security-assessment-hardening"],
-      },
-      {
-        name: "Full-Stack Development",
-        level: "Strong",
-        keywords: ["full stack", "frontend", "backend", "api", "web development", "secure design", "application security"],
-        whatItIs:
-          "Building both front-end interfaces and back-end application logic.",
-        whatItMeans:
-          "It helps me understand how applications are built and where security risks can appear.",
-        howIUseIt:
-          "I use my development background to understand API security, web risks, architecture, and secure design.",
-        projects: ["cybersecurity-portfolio", "api-security-assessment-hardening"],
-      },
-      {
-        name: "Business Intelligence",
-        level: "Strong",
-        keywords: ["business intelligence", "bi", "reporting", "data", "dashboards", "trends", "analysis"],
-        whatItIs:
-          "Using data, reporting, and analysis to support better decisions.",
-        whatItMeans:
-          "In security, BI thinking helps turn logs, alerts, and findings into useful reports.",
-        howIUseIt:
-          "I use BI skills to organize findings, explain trends, and make security information easier to understand.",
-        projects: ["logging-strategy", "secure-network-architecture", "api-security-assessment-hardening"],
+          "In the HSS capstone, I connected phishing, credential exposure, payroll systems, PII, healthcare assets, and development systems to organizational risk.",
+        projects: ["incident-response-capstone-hss", "secure-network-architecture"],
       },
     ],
   },
