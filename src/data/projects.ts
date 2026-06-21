@@ -64,6 +64,26 @@ export const projects = [
     ],
     href: "/projects/api-security-assessment-hardening",
   },
+  {
+    id: "incident-response-capstone-hss",
+    title: "Incident Response Capstone: Phishing & Lateral Movement",
+    status: "completed",
+    category: "SOC / Security Analyst",
+    roleFocus: "Incident Response Analyst / SOC Analyst",
+    description:
+      "Investigated a simulated high-severity healthcare breach involving phishing, malicious PowerShell execution, credential harvesting indicators, outbound C2 activity, and lateral movement attempts toward payroll and development systems.",
+    skills: [
+      "Incident Response",
+      "Phishing Analysis",
+      "PowerShell",
+      "Lateral Movement",
+      "Credential Harvesting",
+      "Snort IDS",
+      "Zeek",
+      "MITRE ATT&CK",
+    ],
+    href: "/projects/incident-response-capstone-hss",
+  },
 
   // Planned SOC / Security Analyst Projects
   {
