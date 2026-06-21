@@ -7,6 +7,10 @@ import { navigation } from "../data/navigation";
 
 const projectLinks = [
   {
+    name: "Incident Response Capstone",
+    href: "/projects/incident-response-capstone-hss",
+  },
+  {
     name: "Security Lab Architecture",
     href: "/projects/security-lab-architecture",
   },
