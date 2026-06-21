@@ -19,7 +19,7 @@ export default function Footer() {
             evidence-based project work.
           </p>
           <p className="mt-4 text-xs text-slate-500">
-            Actively maintained · Last updated May 2026
+            Actively maintained · Last updated June 2026
           </p>
         </div>
 
