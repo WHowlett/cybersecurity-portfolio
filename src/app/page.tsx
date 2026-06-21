@@ -1,13 +1,30 @@
 import Link from "next/link";
 
 const highlights = [
+  "Incident Response",
   "Security Architecture",
   "Detection Engineering",
   "Risk Assessment",
   "Cloud & API Security",
 ];
 
+const latestUpdate = {
+  eyebrow: "Latest Portfolio Update",
+  title: "Incident Response Capstone: Phishing & Lateral Movement",
+  description:
+    "New completed case study covering a simulated healthcare breach investigation: phishing-driven compromise, malicious PowerShell execution, credential harvesting indicators, C2 activity, attempted lateral movement, MITRE ATT&CK mapping, and executive-ready reporting.",
+  href: "/projects/incident-response-capstone-hss",
+  evidence: "Includes full IR report, presentation deck, expanded pitch deck, and video walkthrough.",
+};
+
 const featuredProjects = [
+  {
+    label: "Latest Completed Project",
+    title: "Incident Response Capstone: Phishing & Lateral Movement",
+    description:
+      "Investigated a simulated high-severity healthcare breach involving phishing, PowerShell malware, credential harvesting indicators, C2 activity, and lateral movement attempts toward payroll and development systems.",
+    href: "/projects/incident-response-capstone-hss",
+  },
   {
     label: "Completed Project",
     title: "Security Lab Architecture and Setup",
@@ -21,13 +38,6 @@ const featuredProjects = [
     description:
       "Designed a segmented network architecture using a DMZ, VLANs, controlled access, and risk-based security decisions.",
     href: "/projects/secure-network-architecture",
-  },
-  {
-    label: "Completed Project",
-    title: "Wazuh Custom Detection Engineering",
-    description:
-      "Created and validated a custom Wazuh detection rule for SSH brute-force activity using Kali Linux and Hydra.",
-    href: "/projects/wazuh-detection-engineering",
   },
 ];
 
@@ -118,6 +128,34 @@ export default function Home() {
             </span>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <Link
+          href={latestUpdate.href}
+          className="group block overflow-hidden rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/15 via-slate-900/80 to-slate-950 p-8 shadow-2xl shadow-cyan-950/20 transition hover:-translate-y-1 hover:border-cyan-300"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+                {latestUpdate.eyebrow}
+              </p>
+              <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white md:text-4xl">
+                {latestUpdate.title}
+              </h2>
+              <p className="mt-5 max-w-4xl leading-7 text-slate-300">
+                {latestUpdate.description}
+              </p>
+              <p className="mt-4 text-sm font-semibold text-cyan-300">
+                {latestUpdate.evidence}
+              </p>
+            </div>
+
+            <div className="shrink-0 rounded-2xl border border-cyan-400/40 bg-slate-950/70 px-5 py-4 text-sm font-bold text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-slate-950">
+              View latest case study →
+            </div>
+          </div>
+        </Link>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
