@@ -26,6 +26,15 @@ const projectLabels: Record<string, string> = {
   "logging-strategy": "Logging Strategy",
 };
 
+const completedEvidenceProjects = [
+  "incident-response-capstone-hss",
+  "security-lab-architecture",
+  "secure-network-architecture",
+  "wazuh-detection-engineering",
+  "brute-force-detection",
+  "api-security-assessment-hardening",
+];
+
 type Skill = {
   name: string;
   level: string;
@@ -49,16 +58,10 @@ function formatProjectName(project: string) {
 export default function SkillCard({ skill, isOpen, onToggle }: Props) {
   const evidenceProjects = skill.projects.slice(0, 3);
   const remainingEvidence = Math.max(skill.projects.length - evidenceProjects.length, 0);
-  const isEvidenceBacked = skill.projects.some((project) =>
-    [
-      "incident-response-capstone-hss",
-      "security-lab-architecture",
-      "secure-network-architecture",
-      "wazuh-detection-engineering",
-      "brute-force-detection",
-      "api-security-assessment-hardening",
-    ].includes(project)
-  );
+  const completedEvidenceCount = skill.projects.filter((project) => completedEvidenceProjects.includes(project)).length;
+  const roadmapEvidenceCount = Math.max(skill.projects.length - completedEvidenceCount, 0);
+  const isEvidenceBacked = completedEvidenceCount > 0;
+  const strengthenedByCapstone = skill.projects.includes("incident-response-capstone-hss");
 
   return (
     <div
@@ -79,21 +82,43 @@ export default function SkillCard({ skill, isOpen, onToggle }: Props) {
             </p>
           </div>
 
-          <span className="shrink-0 rounded-full bg-slate-800 px-3 py-1 text-xs text-cyan-400">
-            {skill.level}
-          </span>
+          <div className="flex shrink-0 flex-col items-end gap-2">
+            <span className="rounded-full bg-slate-800 px-3 py-1 text-xs text-cyan-400">
+              {skill.level}
+            </span>
+            <span className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1 text-xs text-slate-400">
+              {completedEvidenceCount} evidence project{completedEvidenceCount === 1 ? "" : "s"}
+            </span>
+          </div>
         </div>
 
+        {strengthenedByCapstone && (
+          <div className="mt-4 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-3 py-2 text-xs font-semibold text-cyan-300">
+            Strengthened June 2026 by the Incident Response Capstone
+          </div>
+        )}
+
         <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
-            Evidence
-          </p>
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+              Evidence
+            </p>
+            {roadmapEvidenceCount > 0 && (
+              <p className="text-xs text-slate-500">
+                +{roadmapEvidenceCount} roadmap item{roadmapEvidenceCount === 1 ? "" : "s"}
+              </p>
+            )}
+          </div>
 
           <div className="mt-2 flex flex-wrap gap-2">
             {evidenceProjects.map((project) => (
               <span
                 key={project}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-300"
+                className={`rounded-lg border px-2 py-1 text-xs ${
+                  completedEvidenceProjects.includes(project)
+                    ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-200"
+                    : "border-slate-700 bg-slate-950 text-slate-400"
+                }`}
               >
                 {formatProjectName(project)}
               </span>
