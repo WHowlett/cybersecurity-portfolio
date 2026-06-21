@@ -5,9 +5,9 @@ import ProjectShareActions from "@/components/ProjectShareActions";
 const projectUrl = "https://www.ihowlett.com/projects/incident-response-capstone-hss";
 const videoUrl = "https://youtu.be/0NSW7-e8O6U";
 const reportPath = "/docs/HSS_Incident_Response_Report.pdf";
-const pitchPath = "/docs/HSS_Incident_Response_Project_Pitch.pdf";
 const presentationPath = "/docs/HSS_Incident_Response_Presentation.pdf";
-const ogImage = "/og-image.png";
+const pitchPath = "/docs/HSS_Incident_Response_Project_Pitch.pdf";
+const ogImage = "/projects/incident-response-capstone-hss/opengraph-image";
 
 export const metadata: Metadata = {
   title: "Incident Response Capstone: Phishing & Lateral Movement",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: ogImage,
         width: 1200,
         height: 630,
-        alt: "Incident Response Capstone case study by Wayne Howlett",
+        alt: "Incident Response Capstone - HealthSecure Systems case study by Wayne Howlett",
       },
     ],
   },
@@ -153,6 +153,24 @@ const mitre = [
   ["Command and Control", "Outbound HTTP communication"],
 ];
 
+const evidenceFiles = [
+  {
+    label: "Full Incident Response Report",
+    detail: "33-page written report covering the full IR lifecycle.",
+    href: reportPath,
+  },
+  {
+    label: "Executive Presentation Deck",
+    detail: "12-slide presentation version for concise review.",
+    href: presentationPath,
+  },
+  {
+    label: "Expanded Project Pitch Deck",
+    detail: "30-slide project pitch with timeline, MITRE mapping, and roadmap.",
+    href: pitchPath,
+  },
+];
+
 function Card({ children }: { children: React.ReactNode }) {
   return <section className="rounded-3xl border border-slate-800 bg-slate-900/70 p-8">{children}</section>;
 }
@@ -170,12 +188,12 @@ export default function IncidentResponseCapstonePage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-20">
       <Link href="/projects" className="text-sm font-semibold text-cyan-400 hover:text-cyan-300">
-        ← Back to Projects
+        Back to Projects
       </Link>
 
       <section className="mt-8">
         <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
-          Case Study — Incident Response / SOC Analysis
+          Case Study - Incident Response / SOC Analysis
         </p>
 
         <h1 className="mt-4 text-4xl font-bold md:text-5xl">
@@ -193,10 +211,13 @@ export default function IncidentResponseCapstonePage() {
             Watch Video Walkthrough
           </a>
           <a href={reportPath} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-400">
-            View Incident Report
+            Open 33-Page IR Report
+          </a>
+          <a href={presentationPath} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-400">
+            Open 12-Slide Presentation
           </a>
           <a href={pitchPath} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-400">
-            View Pitch Deck
+            Open 30-Slide Pitch Deck
           </a>
         </div>
       </section>
@@ -337,14 +358,11 @@ export default function IncidentResponseCapstonePage() {
       <section className="mt-14 rounded-3xl border border-slate-800 bg-slate-900/70 p-8">
         <SectionHeading eyebrow="Evidence Downloads" title="Project artifacts" />
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {[
-            ["Incident Response Report", reportPath],
-            ["Project Pitch Deck", pitchPath],
-            ["Presentation Deck", presentationPath],
-          ].map(([label, href]) => (
-            <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-slate-800 bg-slate-950 p-5 transition hover:border-cyan-400 hover:text-cyan-400">
-              <p className="text-sm font-semibold text-white">{label}</p>
-              <p className="mt-2 text-xs text-slate-400">Open PDF →</p>
+          {evidenceFiles.map((file) => (
+            <a key={file.href} href={file.href} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-slate-800 bg-slate-950 p-5 transition hover:border-cyan-400 hover:text-cyan-400">
+              <p className="text-sm font-semibold text-white">{file.label}</p>
+              <p className="mt-2 text-xs leading-5 text-slate-400">{file.detail}</p>
+              <p className="mt-4 text-xs font-semibold text-cyan-400">Open PDF</p>
             </a>
           ))}
         </div>
